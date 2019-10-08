@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  email: 'string';
+  email: string ;
+  saisie = 'Entrer votre Email';
   constructor() { }
 
   ngOnInit() {
