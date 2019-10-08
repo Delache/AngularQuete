@@ -1,0 +1,10 @@
+<h1>Quête odyssey 3:</h1><hr>
+
+  <h2>Movies</h2>
+  <div *ngIf='showMovie===true'>
+  <ul>
+    <li *ngFor="let film of films">
+        <h3 appHoverIt>Film : {{film.title}} -- Years: {{film.year}}</h3></li>
+  </ul>
+</div>
+<button (click)='getStatus()'>{{buttonTitle()}}</button>
