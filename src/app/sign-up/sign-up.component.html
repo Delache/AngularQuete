@@ -1,3 +1,32 @@
-<h1>Quête odyssey 1:</h1><hr>
-<label for="email">{{saisie}}</label><br>
-<input [(ngModel)]='saisie' type="email" name="email"/><hr>
+<form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm">
+  <div>
+    <label for="user">Nom :</label>
+    <input name="user" type="text" [(ngModel)]="model.name"  #nameRef="ngModel" required minlength="4" maxlength="25" >
+  </div>
+  <div *ngIf="nameRef.errors && myForm.submitted">
+    <div *ngIf = "nameRef?.errors.required">
+        Le champs Nom est requis
+    </div>
+    <div *ngIf = "nameRef?.errors.maxlength && nameRef.touched">
+      Le champs Nom ne doit pas dépasser 25 caractères
+    </div>
+    <div *ngIf = "nameRef?.errors.minlength && nameRef.touched">
+      Le champs Nom doit dépasser 4 caractères    </div>
+ </div>
+
+  <div>
+    <label for="email">Email :</label>
+    <input name="email" type="email" [(ngModel)]="model.email" #emailRef="ngModel" required>
+  </div>
+
+  <div *ngIf="emailRef.invalid && myForm.submitted">
+      <div *ngIf = "emailRef?.errors.required">
+          Le champs Email est requis
+      </div>
+      <div *ngIf = "emailRef?.errors.pattern && emailRef.touched">
+          Le champ Email est invalide
+      </div>
+   </div>
+   <button type="submit">Submit</button>
+
+</form>
